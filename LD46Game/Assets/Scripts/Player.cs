@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float jumpVelocity;
 
-
     public enum State
     {
         Idle,
@@ -31,9 +30,9 @@ public class Player : MonoBehaviour
         // when movement is performed, push context (direction, weight) to move
         controls.PlayerControls.Move.performed += ctx => Move(ctx);
         // reset when not moving
-        controls.PlayerControls.Move.canceled += ctx => Idle(ctx);
+        controls.PlayerControls.Move.canceled += ctx => Move(ctx);
         controls.PlayerControls.Jump.performed += ctx => Jump();
-        controls.PlayerControls.Jump.canceled += ctx => Falling();
+        controls.PlayerControls.Jump.canceled += ctx => Jump();
         // default the player to idle
         state = State.Idle;
     }
@@ -44,6 +43,15 @@ public class Player : MonoBehaviour
             // store movements in new var - frame independent due to deltatime multiplication
             Vector2 m = new Vector2(move.x, move.y) * Time.deltaTime;
             transform.Translate(m * moveSpeed, Space.World);
+
+        }
+        if (state == State.Jumping && Grounded())
+        {
+            playerRigidbody.velocity = Vector2.up * jumpVelocity;
+        }
+        if(Grounded() && state != State.Moving)
+        {
+            state = State.Idle;
         }
     }
     void Move(InputAction.CallbackContext ctx)
@@ -55,30 +63,24 @@ public class Player : MonoBehaviour
         }
         else
         {
+            move = Vector2.zero;
             state = State.Idle;
         }
-    }
-    void Idle(InputAction.CallbackContext ctx)
-    {
-        move = Vector2.zero;
-        state = State.Idle;
     }
     void Jump()
     {
         if (Grounded())
         {
-            playerRigidbody.velocity = Vector2.up * jumpVelocity;
-
             state = State.Jumping;
         }
-    }
-    void Falling()
-    {
-        state = State.Falling;
+        else
+        {
+            state = State.Falling;
+        }
     }
     bool Grounded()
     {
-        RaycastHit2D rayHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, 0.5f, groundLayerMask);
+        RaycastHit2D rayHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down, 0.1f, groundLayerMask);
         Debug.Log(rayHit.collider);
         return rayHit.collider != null;
     }

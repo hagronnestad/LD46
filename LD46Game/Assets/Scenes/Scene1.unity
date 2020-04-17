@@ -305,7 +305,7 @@ MonoBehaviour:
     m_Bits: 256
   state: 0
   moveSpeed: 2
-  jumpVelocity: 2
+  jumpVelocity: 5
 --- !u!50 &916639987
 Rigidbody2D:
   serializedVersion: 4
