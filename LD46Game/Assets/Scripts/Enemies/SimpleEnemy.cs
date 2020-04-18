@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemies {
+    
     public class SimpleEnemy : EnemyBase {
         [SerializeField] Transform rayCastPoint;
-
+       
         Vector2 movement;
         public float speed = 1f;
         public float sightRange;
@@ -16,12 +17,17 @@ namespace Assets.Scripts.Enemies {
 
         void Start() {
             enemyRigidBody = this.GetComponent<Rigidbody2D>();
+            player = FindObjectOfType<Players.Player>().transform;
         }
 
         void Update() {
             Vector2 direction = player.position - transform.position;
             direction.Normalize();
             movement = direction;
+
+            if(Health <= 0) {
+                Destroy(this.gameObject);
+            }
         }
 
         void FixedUpdate() {
