@@ -17,10 +17,10 @@ namespace Assets.Scripts.Managers {
 
         // Start is called before the first frame update
         void Start() {
-            ScrollPopUp.OpenScroll("Test", new List<string>() {
-                "This is the first text!",
-                "This is the second text!",
-            });
+            //ScrollPopUp.OpenScroll("Test", new List<string>() {
+            //    "This is the first text!",
+            //    "This is the second text!",
+            //});
         }
 
         // Update is called once per frame
