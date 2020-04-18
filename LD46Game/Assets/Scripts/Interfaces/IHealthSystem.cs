@@ -1,6 +1,7 @@
 ﻿namespace Assets.Scripts.Interfaces {
     public interface IHealthSystem {
-        float Health { get; set; }
+        float GetHealth();
+        void SetHealth(float value);
         void Damage(float amount);
         void Heal(float amount);
     }

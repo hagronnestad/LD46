@@ -2,26 +2,35 @@
 using UnityEngine;
 
 namespace Assets.Scripts.Enemies {
-    class EnemyBase : MonoBehaviour, IHealthSystem {
-
-        private float _health;
-
-        float IHealthSystem.Health { get => _health; set => _health = value; }
-
-        public void Damage(float amount) {
-            _health -= amount;
-            if (_health < 0f) _health = 0f;
-
-            if (_health == 0) Kill();
-        }
-
-        public void Heal(float amount) {
-            _health += amount;
-            if (_health > 1.0f) _health = 1.0f;
-        }
+    public class EnemyBase : MonoBehaviour, IHealthSystem {
 
         public void Kill() {
             Destroy(this);
+        }
+
+
+        // IHealthSystem implementation
+
+        public float Health;
+
+        public void Damage(float amount) {
+            Health -= amount;
+            if (Health < 0f) Health = 0f;
+
+            if (Health == 0) Kill();
+        }
+
+        public float GetHealth() {
+            return Health;
+        }
+
+        public void Heal(float amount) {
+            Health += amount;
+            if (Health > 1.0f) Health = 1.0f;
+        }
+
+        public void SetHealth(float value) {
+            Health = value;
         }
     }
 }

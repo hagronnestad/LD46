@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Enemies;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Players {
-    public class Player : MonoBehaviour {
+    public class Player : EnemyBase {
         [SerializeField] LayerMask groundLayerMask;
         Controls controls;
 
@@ -39,6 +40,8 @@ namespace Assets.Scripts.Players {
 
             // default the player to idle
             state = State.Idle;
+
+            SetHealth(0.5f);
         }
 
         void Update() {
