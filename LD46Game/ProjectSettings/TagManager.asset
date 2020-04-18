@@ -16,7 +16,7 @@ TagManager:
   - 
   - Walkable
   - Collideable
-  - 
+  - Action
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2347331715
+    locked: 0
+  - name: UI
+    uniqueID: 2702894541
     locked: 0
