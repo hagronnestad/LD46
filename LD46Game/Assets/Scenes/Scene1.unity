@@ -2894,15 +2894,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1635003851, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1353795058}
+    - target: {fileID: 1635003851, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7930877420900800441, guid: 74eafb7ef1585864a8f5116392122bad,
         type: 3}
       propertyPath: m_Name
       value: RedBlob
       objectReference: {fileID: 0}
+    - target: {fileID: 7930877420900800445, guid: 74eafb7ef1585864a8f5116392122bad,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7930877420900800446, guid: 74eafb7ef1585864a8f5116392122bad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.85
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 7930877420900800446, guid: 74eafb7ef1585864a8f5116392122bad,
         type: 3}
@@ -2954,26 +2967,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 337240375, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
---- !u!1 &1635003850 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7930877420900800441, guid: 74eafb7ef1585864a8f5116392122bad,
-    type: 3}
-  m_PrefabInstance: {fileID: 1549362885}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1635003851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635003850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 298d392a58162414ebaef9136f222003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 1
-  player: {fileID: 1353795058}
