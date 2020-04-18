@@ -197,7 +197,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1592072755
+  m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &310378357
@@ -226,12 +226,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 905983960}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &455127050 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7930877420900800446, guid: 74eafb7ef1585864a8f5116392122bad,
-    type: 3}
-  m_PrefabInstance: {fileID: 1549362885}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +237,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -259,22 +252,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a21c87a6969c3b4280a400d05b8e7bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followTarget: {fileID: 1353795058}
-  smoothSpeed: 4
-  offset: {x: 1.5, y: 0}
-  threshold: {x: 0, y: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -302,7 +279,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8.917355
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -326,7 +303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 5.98, z: -10}
+  m_LocalPosition: {x: 0.3, y: 2.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2825,53 +2802,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1306535011
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1306535012}
-  - component: {fileID: 1306535013}
-  m_Layer: 0
-  m_Name: AgroCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1306535012
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306535011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 455127050}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1306535013
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306535011}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.3
 --- !u!1 &1316052893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,7 +2828,7 @@ Grid:
   m_GameObject: {fileID: 1316052893}
   m_Enabled: 1
   m_CellSize: {x: 1, y: 1, z: 0}
-  m_CellGap: {x: -0.0001, y: -0.0001, z: 0}
+  m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
 --- !u!4 &1316052895
@@ -3036,7 +2966,7 @@ MonoBehaviour:
   Health: 0
   animator: {fileID: 1353795056}
   state: 0
-  moveSpeed: 5
+  moveSpeed: 2
   moveSpeedInAir: 0
   maxMoveVelocity: 0
   jumpVelocity: 0
@@ -3101,18 +3031,6 @@ PrefabInstance:
     - target: {fileID: 1635003851, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
       propertyPath: speed
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635003851, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
-      propertyPath: rayCastPoint
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635003851, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
-      propertyPath: sightRange
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635003856, guid: 74eafb7ef1585864a8f5116392122bad, type: 3}
-      propertyPath: m_Constraints
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7930877420900800441, guid: 74eafb7ef1585864a8f5116392122bad,
         type: 3}
