@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Managers;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,6 +42,7 @@ namespace Assets.Scripts.Enemies {
         void OnCollisionEnter2D(Collision2D collision) {
             if (collision.gameObject.tag == "Player") {
                 Damage(0.2f);
+                GameManager.Instance.GainWizardEnergy(0.1f);
             }
         }
         bool HasSight(float distance) {
