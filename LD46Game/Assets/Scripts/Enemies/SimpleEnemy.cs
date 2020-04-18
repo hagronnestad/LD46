@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemies {
-    
+
     public class SimpleEnemy : EnemyBase {
         [SerializeField] Transform rayCastPoint;
-       
+
         Vector2 movement;
         public float speed = 1f;
         public float sightRange;
@@ -25,7 +25,7 @@ namespace Assets.Scripts.Enemies {
             direction.Normalize();
             movement = direction;
 
-            if(Health <= 0) {
+            if (Health <= 0) {
                 Destroy(this.gameObject);
             }
         }
@@ -41,30 +41,31 @@ namespace Assets.Scripts.Enemies {
         }
 
         void OnTriggerEnter2D(Collider2D collision) {
-            if(collision.gameObject.tag == "Player") {
+            if (collision.gameObject.tag == "Player") {
                 agro = true;
             }
         }
         void OnCollisionEnter2D(Collision2D collision) {
-            if (collision.gameObject.tag == "Player") {
-                Damage(0.2f);
+            if (collision.gameObject.tag == "Basic Attack") {
+                Damage(0.1f);
                 GameManager.Instance.GainWizardEnergy(0.1f);
             }
         }
-        bool HasSight(float distance) {
-            bool sightValue = false;
-            float rayDistance = distance;
-            Vector2 rayEndPoint = rayCastPoint.position + Vector3.right * distance;
-            RaycastHit2D hit = Physics2D.Linecast(rayCastPoint.position, rayEndPoint, 1 << LayerMask.NameToLayer("Action"));
-            Debug.DrawLine(rayCastPoint.position, hit.point, Color.red);
-            if(hit.collider != null) {
-                if(hit.collider.gameObject.CompareTag("Player")) {
-                    sightValue = true;
-                } else {
-                    sightValue = false;
-                }
-            }
-            return sightValue;
-        }
+        // line of sight code, might come in handy later
+        //bool HasSight(float distance) {
+        //    bool sightValue = false;
+        //    float rayDistance = distance;
+        //    Vector2 rayEndPoint = rayCastPoint.position + Vector3.right * distance;
+        //    RaycastHit2D hit = Physics2D.Linecast(rayCastPoint.position, rayEndPoint, 1 << LayerMask.NameToLayer("Action"));
+        //    Debug.DrawLine(rayCastPoint.position, hit.point, Color.red);
+        //    if(hit.collider != null) {
+        //        if(hit.collider.gameObject.CompareTag("Player")) {
+        //            sightValue = true;
+        //        } else {
+        //            sightValue = false;
+        //        }
+        //    }
+        //    return sightValue;
+        //}
     }
 }
