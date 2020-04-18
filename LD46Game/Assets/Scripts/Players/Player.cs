@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 using Assets.Scripts.Extensions;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
+using Assets.Scripts.Managers;
+using Unity.Mathematics;
 
 namespace Assets.Scripts.Players {
     public class Player : MonoBehaviour {
@@ -57,6 +59,10 @@ namespace Assets.Scripts.Players {
 
         void FixedUpdate() {
             playerRigidbody.MovePosition(playerRigidbody.position + movementVector * moveSpeed * Time.fixedDeltaTime);
+
+            if (Mathf.Abs(movementVector.x) > 0.1 || Mathf.Abs(movementVector.y) > 0.1) {
+                GameManager.Instance.UseWizardEnergy(0.001f);
+            }
         }
 
         void OnTriggerEnter2D(Collider2D collision) {
@@ -104,6 +110,9 @@ namespace Assets.Scripts.Players {
             //go2.transform.position = new Vector3(transform.position.x, transform.position.y, -0.1f);
             //go2.transform.Rotate(90f, 0, 0);
             //go2.DrawCircle(radius, 0.1f);
+
+
+            GameManager.Instance.UseWizardEnergy(0.1f);
         }
     }
 }

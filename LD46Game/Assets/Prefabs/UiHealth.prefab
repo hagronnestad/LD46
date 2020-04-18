@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bdd7a29a236c442a24274ff41a43a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 1
   frame: {fileID: 5209955182498343932}
   fill: {fileID: 6976411957527443592}
 --- !u!1 &9100416412906332163
