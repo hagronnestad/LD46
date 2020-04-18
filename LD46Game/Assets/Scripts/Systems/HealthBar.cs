@@ -14,11 +14,6 @@ namespace Assets.Scripts.Systems {
             healthSystem = (IHealthSystem) transform.parent.gameObject.GetComponent<MonoBehaviour>();
         }
 
-        // Start is called before the first frame update
-        void Start() {
-
-        }
-
         // Update is called once per frame
         void Update() {
             Bar.transform.localScale = new Vector3(Background.transform.localScale.x * healthSystem.GetHealth(), Background.transform.localScale.y, Background.transform.localScale.z);
