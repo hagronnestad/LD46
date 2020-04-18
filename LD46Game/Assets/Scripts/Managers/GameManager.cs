@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Ui;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers {
@@ -7,6 +8,7 @@ namespace Assets.Scripts.Managers {
         public static GameManager Instance;
 
         public UiHealth WizardHealthBar;
+        public ScrollPopUp ScrollPopUp;
 
         private void Awake() {
             if (Instance == null) Instance = this;
@@ -15,7 +17,10 @@ namespace Assets.Scripts.Managers {
 
         // Start is called before the first frame update
         void Start() {
-
+            ScrollPopUp.OpenScroll("Test", new List<string>() {
+                "This is the first text!",
+                "This is the second text!",
+            });
         }
 
         // Update is called once per frame
