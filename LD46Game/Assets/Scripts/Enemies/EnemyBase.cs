@@ -5,7 +5,7 @@ namespace Assets.Scripts.Enemies {
     public class EnemyBase : MonoBehaviour, IHealthSystem {
 
         public void Kill() {
-            Destroy(this);
+            Destroy(gameObject);
         }
 
 
