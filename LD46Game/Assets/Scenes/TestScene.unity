@@ -2036,7 +2036,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2133,12 +2133,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioClips:
-  - Name: test
-    AudioClip: {fileID: 0}
-  - Name: 
-    AudioClip: {fileID: 0}
-  - Name: 
-    AudioClip: {fileID: 0}
+  - Name: charged_attack
+    AudioClip: {fileID: 8300000, guid: 53e74b443b0c1254d95c06b08fa0ef71, type: 3}
+  - Name: attack
+    AudioClip: {fileID: 8300000, guid: 100450119ae326b4592a8f67fea85a7a, type: 3}
+  - Name: energy_full
+    AudioClip: {fileID: 8300000, guid: 59e3d11400f503c4ebd31d59c35be4a6, type: 3}
   - Name: 
     AudioClip: {fileID: 0}
   - Name: 
