@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Basic Attack
+  - Resume Button
   layers:
   - Default
   - TransparentFX
