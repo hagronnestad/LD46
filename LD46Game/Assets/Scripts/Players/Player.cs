@@ -126,6 +126,8 @@ namespace Assets.Scripts.Players {
 
 
             GameManager.Instance.UseWizardEnergy(0.1f);
+
+            Camera.main.GetComponent<CameraShake>().DoShake();
         }
         void FlipPlayer(float moveVec, float attVec) {
             if(moveVec > 0 && !facingRight || moveVec < 0 && facingRight || attVec > 0 && !facingRight || attVec < 0 && facingRight) {
