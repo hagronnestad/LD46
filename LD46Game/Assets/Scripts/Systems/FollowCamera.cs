@@ -3,8 +3,6 @@
 public class FollowCamera : MonoBehaviour
 {
     public Transform followTarget;
-    Rigidbody2D playerRigidBody;
-    public float smoothSpeed = 4f;
     public Vector2 offset;
     public Vector2 threshold;
 
@@ -14,7 +12,6 @@ public class FollowCamera : MonoBehaviour
 
     private void Start() {
         threshold = CalcThreshold();
-        playerRigidBody = followTarget.GetComponent<Rigidbody2D>();
     }
     void FixedUpdate() {
         Vector2 follow = followTarget.transform.position;
@@ -28,8 +25,6 @@ public class FollowCamera : MonoBehaviour
         if (Mathf.Abs(yDiff) >= threshold.y) {
             newPos.y = follow.y;
         }
-        //float moveSpeed = playerRigidBody.velocity.magnitude > smoothSpeed ? playerRigidBody.velocity.magnitude : smoothSpeed;
-        //transform.position = Vector3.MoveTowards(transform.position,newPos,moveSpeed * Time.deltaTime);
         transform.position = newPos;
 
         if(bounds) {
