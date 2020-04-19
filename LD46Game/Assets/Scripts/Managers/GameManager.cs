@@ -34,7 +34,7 @@ namespace Assets.Scripts.Managers {
         // Update is called once per frame
         void Update() {
 
-            if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick 1 button 7")) {
 
                 if (CurrentGameState != GameState.Paused && CurrentGameState != GameState.GameOver) {
                     PauseMenu.OpenPauseMenu();
@@ -47,8 +47,6 @@ namespace Assets.Scripts.Managers {
             }
 
         }
-
-
 
         public void UseWizardEnergy(float amount) {
             WizardHealthBar.Health -= amount;
