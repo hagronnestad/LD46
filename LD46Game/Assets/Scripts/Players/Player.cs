@@ -38,6 +38,7 @@ namespace Assets.Scripts.Players {
             controls.PlayerActions.Move.performed += ctx => movementVector = ctx.ReadValue<Vector2>();
             controls.PlayerActions.BasicAttack.performed += ctx => attackVector = ctx.ReadValue<Vector2>();
             controls.PlayerActions.ChargedAttack.performed += ctx => UseChargeAttack();
+            controls.PlayerActions.PauseMenu.performed += ctx => GameManager.Instance.TogglePauseMenu();
             playerRigidbody = transform.GetComponent<Rigidbody2D>();
             playerCollider = transform.GetComponent<BoxCollider2D>();
         }
