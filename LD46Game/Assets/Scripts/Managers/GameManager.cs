@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Enums;
+﻿using Assets.Scripts.Audio;
+using Assets.Scripts.Enums;
 using Assets.Scripts.Ui;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace Assets.Scripts.Managers {
         public UiPauseMenu PauseMenu;
 
         public GameState CurrentGameState;
+
+        private bool _playEnergyFullCoolDown = false;
 
         private void Awake() {
             if (Instance == null) Instance = this;
@@ -46,6 +49,9 @@ namespace Assets.Scripts.Managers {
 
             //}
 
+            if (WizardHealthBar.Health < 0.9f) {
+                ResetPlayEnergyFullCoolDown();
+            }
         }
 
         public void UseWizardEnergy(float amount) {
@@ -57,12 +63,28 @@ namespace Assets.Scripts.Managers {
 
         public void GainWizardEnergy(float amount) {
             WizardHealthBar.Health += amount;
-            if (WizardHealthBar.Health > 1.0f) WizardHealthBar.Health = 1.0f;
+            if (WizardHealthBar.Health > 1.0f) {
+                WizardHealthBar.Health = 1.0f;
+                // TODO: Add sound indicating energy fully charged
+
+                if (!_playEnergyFullCoolDown) {
+                    _playEnergyFullCoolDown = true;
+
+                    AudioManager.Instance.Play("energy_full", 0.4f);
+                    //Invoke(nameof(ResetPlayEnergyFullCoolDown), 1.5f);
+                }
+            }
+        }
+
+        private void ResetPlayEnergyFullCoolDown() {
+            _playEnergyFullCoolDown = false;
         }
 
         public void GameOver() {
             if (CurrentGameState == GameState.GameOver) return;
             CurrentGameState = GameState.GameOver;
+            GetComponent<AudioSource>().Pause();
+            Time.timeScale = 0;
 
             ScrollPopUp.OpenScroll("Game Over", new List<string>() {
                 "Oh no! You have greatly failed your quest by draining all the energy and sacrificing the mage in the process!",

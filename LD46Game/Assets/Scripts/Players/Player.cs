@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 using Assets.Scripts.Managers;
 using Unity.Mathematics;
 using Assets.Scripts.Systems;
+using Assets.Scripts.Audio;
 
 namespace Assets.Scripts.Players {
     public class Player : MonoBehaviour {
@@ -82,8 +83,16 @@ namespace Assets.Scripts.Players {
             attackObjectRB.AddForce(transform.localRotation.eulerAngles * attackForce, ForceMode2D.Impulse);
 
             GameManager.Instance.UseWizardEnergy(0.05f);
+            AudioManager.Instance.Play("attack");
+            Camera.main.GetComponent<CameraShake>().DoShake(0.01f, 0.002f);
         }
         void UseChargeAttack() {
+
+            if (GameManager.Instance.WizardHealthBar.Health < 0.9f) {
+                // TODO: Add a sound indicating you don't have enough energy
+                return;
+            }
+
             var radius = 1.5f;
 
             var enemies = new List<EnemyBase>();
@@ -126,6 +135,7 @@ namespace Assets.Scripts.Players {
 
 
             GameManager.Instance.UseWizardEnergy(0.1f);
+            AudioManager.Instance.Play("charged_attack");
 
             Camera.main.GetComponent<CameraShake>().DoShake();
         }
