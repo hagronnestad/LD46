@@ -15,6 +15,8 @@ namespace Assets.Scripts.Enemies {
         public bool agro;
         Rigidbody2D enemyRigidBody;
 
+        public GameObject deathSplatter;
+
         void Start() {
             enemyRigidBody = this.GetComponent<Rigidbody2D>();
             player = FindObjectOfType<Players.Player>().transform;
@@ -25,9 +27,7 @@ namespace Assets.Scripts.Enemies {
             direction.Normalize();
             movement = direction;
 
-            if (Health <= 0) {
-                Destroy(this.gameObject);
-            }
+           
         }
 
         void FixedUpdate() {
@@ -49,6 +49,10 @@ namespace Assets.Scripts.Enemies {
             if (collision.gameObject.tag == "Basic Attack") {
                 Damage(0.1f);
                 GameManager.Instance.GainWizardEnergy(0.1f);
+                if (Health <= 0) {
+                    Instantiate(deathSplatter, transform.position, Quaternion.identity);
+                    Destroy(this.gameObject);
+                }
             }
         }
         // line of sight code, might come in handy later
