@@ -28,6 +28,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Pause Menu",
+                    "type": "Button",
+                    "id": "0b3d2cf5-550b-4bd6-b972-747fd52335c7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -160,6 +168,17 @@
                     "processors": "",
                     "groups": "Main Control Scheme",
                     "action": "Charged Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "208af83d-8688-4fb5-8f7c-0df1e1218679",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Main Control Scheme",
+                    "action": "Pause Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -41,18 +41,6 @@ namespace Assets.Scripts.Managers {
         // Update is called once per frame
         void Update() {
 
-            //if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick 1 button 7")) {
-
-            //    if (CurrentGameState != GameState.Paused && CurrentGameState != GameState.GameOver) {
-            //        PauseMenu.OpenPauseMenu();
-            //    }
-
-            //    else {
-            //        PauseMenu.ClosePauseMenu();
-            //    }
-
-            //}
-
             if (WizardHealthBar.Health < 0.9f) {
                 ResetPlayEnergyFullCoolDown();
             }
@@ -101,6 +89,13 @@ namespace Assets.Scripts.Managers {
             });
         }
 
+        public void TogglePauseMenu() {
+            if (CurrentGameState != GameState.Paused && CurrentGameState != GameState.GameOver) {
+                PauseMenu.OpenPauseMenu();
+            } else {
+                PauseMenu.ClosePauseMenu();
+            }
+        }
 
         public void PauseGame() {
             CurrentGameState = GameState.Paused;

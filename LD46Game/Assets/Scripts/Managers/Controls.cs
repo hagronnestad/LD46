@@ -41,6 +41,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""0b3d2cf5-550b-4bd6-b972-747fd52335c7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -175,6 +183,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Charged Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""208af83d-8688-4fb5-8f7c-0df1e1218679"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Main Control Scheme"",
+                    ""action"": ""Pause Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -192,6 +211,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
         m_PlayerActions_BasicAttack = m_PlayerActions.FindAction("Basic Attack", throwIfNotFound: true);
         m_PlayerActions_ChargedAttack = m_PlayerActions.FindAction("Charged Attack", throwIfNotFound: true);
+        m_PlayerActions_PauseMenu = m_PlayerActions.FindAction("Pause Menu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -244,6 +264,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerActions_Move;
     private readonly InputAction m_PlayerActions_BasicAttack;
     private readonly InputAction m_PlayerActions_ChargedAttack;
+    private readonly InputAction m_PlayerActions_PauseMenu;
     public struct PlayerActionsActions
     {
         private @Controls m_Wrapper;
@@ -251,6 +272,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
         public InputAction @BasicAttack => m_Wrapper.m_PlayerActions_BasicAttack;
         public InputAction @ChargedAttack => m_Wrapper.m_PlayerActions_ChargedAttack;
+        public InputAction @PauseMenu => m_Wrapper.m_PlayerActions_PauseMenu;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,6 +291,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @ChargedAttack.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChargedAttack;
                 @ChargedAttack.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChargedAttack;
                 @ChargedAttack.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChargedAttack;
+                @PauseMenu.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPauseMenu;
+                @PauseMenu.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPauseMenu;
+                @PauseMenu.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnPauseMenu;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -282,6 +307,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @ChargedAttack.started += instance.OnChargedAttack;
                 @ChargedAttack.performed += instance.OnChargedAttack;
                 @ChargedAttack.canceled += instance.OnChargedAttack;
+                @PauseMenu.started += instance.OnPauseMenu;
+                @PauseMenu.performed += instance.OnPauseMenu;
+                @PauseMenu.canceled += instance.OnPauseMenu;
             }
         }
     }
@@ -300,5 +328,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnBasicAttack(InputAction.CallbackContext context);
         void OnChargedAttack(InputAction.CallbackContext context);
+        void OnPauseMenu(InputAction.CallbackContext context);
     }
 }
