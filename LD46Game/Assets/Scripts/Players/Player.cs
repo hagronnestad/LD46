@@ -9,12 +9,11 @@ using Unity.Mathematics;
 
 namespace Assets.Scripts.Players {
     public class Player : MonoBehaviour {
-        PlayerInput playerInput;
+        Controls controls;
 
         Vector2 movementVector;
         Vector2 attackVector;
-        Vector2 mousePos;
-
+        bool facingRight;
         public Animator animator;
 
         Rigidbody2D playerRigidbody;
@@ -23,6 +22,7 @@ namespace Assets.Scripts.Players {
         public GameObject attackPrefab;
 
         public float attackForce;
+        float attackTimer = .25f;
 
         public ParticleSystem chargedAttackParticleSystem;
 
@@ -31,27 +31,20 @@ namespace Assets.Scripts.Players {
         public Camera cam;
 
         void Awake() {
-           
+            facingRight = true;
+            controls = new Controls();
+            controls.PlayerActions.Move.performed += ctx => movementVector = ctx.ReadValue<Vector2>();
+            controls.PlayerActions.BasicAttack.performed += ctx => attackVector = ctx.ReadValue<Vector2>();
             playerRigidbody = transform.GetComponent<Rigidbody2D>();
             playerCollider = transform.GetComponent<BoxCollider2D>();
         }
 
         void Update() {
-            //movementVector.x = Input.GetAxisRaw("Horizontal");
-            //movementVector.y = Input.GetAxisRaw("Vertical");
-
-            //mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
+           
             animator.SetFloat("Horizontal", movementVector.x);
             animator.SetFloat("Vertical", movementVector.y);
             animator.SetFloat("Speed", movementVector.sqrMagnitude);
-
-            //if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1) || Input.GetKeyDown("joystick 1 button 1")) {
-            //    UseChargeAttack();
-            //}
-            //if(Input.GetMouseButtonDown(0) || Input.GetKeyDown("joystick 1 button 0")) {
-            //    UseBasicAttack();
-            //}
+            Debug.Log(movementVector);
         }
 
         void FixedUpdate() {
@@ -61,18 +54,18 @@ namespace Assets.Scripts.Players {
                 GameManager.Instance.UseWizardEnergy(0.001f);
             }
 
-            //Vector2 lookDirection = mousePos - playerRigidbody.position;
-            //float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-            //playerRigidbody.rotation = angle;
+            float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
 
-            //Vector3 playerLocalScale = Vector3.one;
-            //if(angle > 90 || angle < -90) {
-            //    playerLocalScale.y = -1f;
-            //} else {
-            //    playerLocalScale.y = +1f;
-            //}
-            //transform.localScale = playerLocalScale;
-            //Debug.Log(angle);
+            FlipPlayer(movementVector.x,attackVector.x);
+            if (attackTimer < 0 || attackTimer > .5f) {
+                attackTimer = 0;
+            } else {
+                attackTimer -= Time.deltaTime;
+            }
+            if (attackVector.magnitude > 0.1f && attackTimer == 0f) {
+                UseBasicAttack();
+                attackTimer = .25f;
+            }
         }
 
         void OnCollisionEnter2D(Collision2D collision) {
@@ -81,10 +74,10 @@ namespace Assets.Scripts.Players {
             }
         }
 
-        void UseBasicAttack() {
-            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, attackPoint.rotation);
+        public void UseBasicAttack() {
+            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
             Rigidbody2D attackObjectRB = attackObject.GetComponent<Rigidbody2D>();
-            attackObjectRB.AddForce(attackPoint.right * attackForce, ForceMode2D.Impulse);
+            attackObjectRB.AddForce(transform.localRotation.eulerAngles * attackForce, ForceMode2D.Impulse);
 
             GameManager.Instance.UseWizardEnergy(0.05f);
         }
@@ -130,6 +123,21 @@ namespace Assets.Scripts.Players {
 
 
             GameManager.Instance.UseWizardEnergy(0.1f);
+        }
+        void FlipPlayer(float moveVec, float attVec) {
+            if(moveVec > 0 && !facingRight || moveVec < 0 && facingRight || attVec > 0 && !facingRight || attVec < 0 && facingRight) {
+                facingRight = !facingRight;
+                Vector3 playerScale = transform.localScale;
+                playerScale.x *= -1;
+                transform.localScale = playerScale;
+            }
+        }
+
+        void OnEnable() {
+            controls.Enable();
+        }
+        void OnDisable() {
+            controls.Disable();
         }
     }
 }

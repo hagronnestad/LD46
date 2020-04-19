@@ -27,7 +27,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""AttackDirection"",
+                    ""name"": ""Basic Attack"",
                     ""type"": ""PassThrough"",
                     ""id"": ""bfac961e-7345-412b-9c8d-9607bc805786"",
                     ""expectedControlType"": ""Vector2"",
@@ -98,7 +98,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Main Control Scheme"",
-                    ""action"": ""AttackDirection"",
+                    ""action"": ""Basic Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -109,7 +109,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AttackDirection"",
+                    ""action"": ""Basic Attack"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -120,7 +120,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Main Control Scheme"",
-                    ""action"": ""AttackDirection"",
+                    ""action"": ""Basic Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -131,7 +131,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Main Control Scheme"",
-                    ""action"": ""AttackDirection"",
+                    ""action"": ""Basic Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -142,7 +142,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Main Control Scheme"",
-                    ""action"": ""AttackDirection"",
+                    ""action"": ""Basic Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -153,7 +153,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Main Control Scheme"",
-                    ""action"": ""AttackDirection"",
+                    ""action"": ""Basic Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -171,7 +171,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // Player Actions
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
-        m_PlayerActions_AttackDirection = m_PlayerActions.FindAction("AttackDirection", throwIfNotFound: true);
+        m_PlayerActions_BasicAttack = m_PlayerActions.FindAction("Basic Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -222,13 +222,13 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerActions;
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Move;
-    private readonly InputAction m_PlayerActions_AttackDirection;
+    private readonly InputAction m_PlayerActions_BasicAttack;
     public struct PlayerActionsActions
     {
         private @Controls m_Wrapper;
         public PlayerActionsActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
-        public InputAction @AttackDirection => m_Wrapper.m_PlayerActions_AttackDirection;
+        public InputAction @BasicAttack => m_Wrapper.m_PlayerActions_BasicAttack;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -241,9 +241,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
-                @AttackDirection.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnAttackDirection;
-                @AttackDirection.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnAttackDirection;
-                @AttackDirection.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnAttackDirection;
+                @BasicAttack.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBasicAttack;
+                @BasicAttack.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBasicAttack;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -251,9 +251,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @AttackDirection.started += instance.OnAttackDirection;
-                @AttackDirection.performed += instance.OnAttackDirection;
-                @AttackDirection.canceled += instance.OnAttackDirection;
+                @BasicAttack.started += instance.OnBasicAttack;
+                @BasicAttack.performed += instance.OnBasicAttack;
+                @BasicAttack.canceled += instance.OnBasicAttack;
             }
         }
     }
@@ -270,6 +270,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnAttackDirection(InputAction.CallbackContext context);
+        void OnBasicAttack(InputAction.CallbackContext context);
     }
 }
