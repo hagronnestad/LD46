@@ -1,11 +1,14 @@
 ﻿using Assets.Scripts.Interfaces;
+using Assets.Scripts.Managers;
 using UnityEngine;
 
 namespace Assets.Scripts.Enemies {
     public class EnemyBase : MonoBehaviour, IHealthSystem {
 
         public void Kill() {
-            Destroy(this);
+            GameManager.Instance.GainWizardEnergy(0.05f);
+
+            Destroy(gameObject);
         }
 
 
