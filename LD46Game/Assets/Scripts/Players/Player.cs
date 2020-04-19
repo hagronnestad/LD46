@@ -84,6 +84,12 @@ namespace Assets.Scripts.Players {
             GameManager.Instance.UseWizardEnergy(0.05f);
         }
         void UseChargeAttack() {
+
+            if (GameManager.Instance.WizardHealthBar.Health < 1.0f) {
+                // TODO: Add a sound indicating you don't have enough energy
+                return;
+            }
+
             var radius = 1.5f;
 
             var enemies = new List<EnemyBase>();

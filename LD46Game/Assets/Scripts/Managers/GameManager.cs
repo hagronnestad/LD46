@@ -57,7 +57,10 @@ namespace Assets.Scripts.Managers {
 
         public void GainWizardEnergy(float amount) {
             WizardHealthBar.Health += amount;
-            if (WizardHealthBar.Health > 1.0f) WizardHealthBar.Health = 1.0f;
+            if (WizardHealthBar.Health > 1.0f) {
+                WizardHealthBar.Health = 1.0f;
+                // TODO: Add sound indicating energy fully charged
+            }
         }
 
         public void GameOver() {
