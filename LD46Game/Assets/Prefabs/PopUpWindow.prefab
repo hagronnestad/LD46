@@ -553,7 +553,8 @@ MonoBehaviour:
   Container: {fileID: 5546347908196263057}
   Title: {fileID: 5546347907386419302}
   Text: {fileID: 5546347907818546796}
-  Continue: {fileID: 5546347907629508565}
+  PageNo: {fileID: 5546347908315472284}
+  ContinueButton: {fileID: 5546347907629508565}
 --- !u!1 &5546347908315472282
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23584908, g: 0.17578709, b: 0.094562136, a: 1}
+  m_Color: {r: 0.42352942, g: 0.39215687, b: 0.34117648, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

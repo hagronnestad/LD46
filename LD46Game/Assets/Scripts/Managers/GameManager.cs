@@ -1,6 +1,8 @@
-﻿using Assets.Scripts.Ui;
+﻿using Assets.Scripts.Enums;
+using Assets.Scripts.Ui;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Managers {
     public class GameManager : MonoBehaviour {
@@ -10,8 +12,12 @@ namespace Assets.Scripts.Managers {
         public UiHealth WizardHealthBar;
         public ScrollPopUp ScrollPopUp;
 
+        public GameState CurrentGameState;
+
         private void Awake() {
             if (Instance == null) Instance = this;
+
+            CurrentGameState = GameState.NotStarted;
         }
 
 
@@ -26,6 +32,18 @@ namespace Assets.Scripts.Managers {
         // Update is called once per frame
         void Update() {
 
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+
+                if (CurrentGameState != GameState.Paused && CurrentGameState != GameState.GameOver) {
+                    PauseGame();
+                }
+
+                else {
+                    ContinueGame();
+                }
+
+            }
+
         }
 
 
@@ -33,11 +51,36 @@ namespace Assets.Scripts.Managers {
         public void UseWizardEnergy(float amount) {
             WizardHealthBar.Health -= amount;
             if (WizardHealthBar.Health < 0f) WizardHealthBar.Health = 0f;
+
+            if (WizardHealthBar.Health == 0) GameOver();
         }
 
         public void GainWizardEnergy(float amount) {
             WizardHealthBar.Health += amount;
             if (WizardHealthBar.Health > 1.0f) WizardHealthBar.Health = 1.0f;
+        }
+
+        public void GameOver() {
+            if (CurrentGameState == GameState.GameOver) return;
+            CurrentGameState = GameState.GameOver;
+
+            ScrollPopUp.OpenScroll("Game Over", new List<string>() {
+                "Oh no! You have greatly failed your quest by draining all the energy and sacrificing the mage in the process!",
+                "You did not keep it alive!"
+
+            }, () => {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            });
+        }
+
+
+        private void PauseGame() {
+            CurrentGameState = GameState.Paused;
+            Time.timeScale = 0;
+        }
+        private void ContinueGame() {
+            CurrentGameState = GameState.Playing;
+            Time.timeScale = 1;
         }
     }
 }

@@ -35,7 +35,6 @@ namespace Assets.Scripts.Players {
         }
 
         void Update() {
-
             movementVector.x = Input.GetAxisRaw("Horizontal");
             movementVector.y = Input.GetAxisRaw("Vertical");
 

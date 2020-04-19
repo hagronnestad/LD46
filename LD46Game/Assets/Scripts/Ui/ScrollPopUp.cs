@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,20 +12,24 @@ namespace Assets.Scripts.Ui {
         public Text Title;
         public Text Text;
         public Text PageNo;
-        public Button Continue;
+        public Button ContinueButton;
+        public Action ContinueAction;
 
         private List<string> _texts;
         private int _currentTextIndex = 0;
 
-        public void OpenScroll(string title, List<string> texts) {
+        public void OpenScroll(string title, List<string> texts, Action continueAction = null) {
             _currentTextIndex = 0;
             _texts = texts;
 
-            Title.text = title;
-            Text.text = _texts[_currentTextIndex];
+            Title.text = title.ToUpper();
+            Text.text = _texts[_currentTextIndex].ToUpper();
             PageNo.text = $"{_currentTextIndex + 1}/{_texts.Count}";
 
+            ContinueAction = continueAction;
+
             Container.SetActive(true);
+            ContinueButton.Select();
         }
 
         public void CloseScroll() {
@@ -33,7 +38,7 @@ namespace Assets.Scripts.Ui {
 
 
         private void Awake() {
-            Continue.onClick.AddListener(OnClick_Continue);
+            ContinueButton.onClick.AddListener(OnClick_Continue);
         }
 
         private void OnClick_Continue() {
@@ -41,9 +46,10 @@ namespace Assets.Scripts.Ui {
 
             if (_currentTextIndex == _texts.Count) {
                 CloseScroll();
+                ContinueAction?.Invoke();
 
             } else {
-                Text.text = _texts[_currentTextIndex];
+                Text.text = _texts[_currentTextIndex].ToUpper();
                 PageNo.text = $"{_currentTextIndex + 1}/{_texts.Count}";
             }
         }
