@@ -14,6 +14,8 @@ namespace Assets.Scripts.Managers {
         public ScrollPopUp ScrollPopUp;
         public UiPauseMenu PauseMenu;
 
+        private Animator _wizardHealthBarAnimator;
+
         public GameState CurrentGameState;
 
         private bool _playEnergyFullCoolDown = false;
@@ -23,6 +25,8 @@ namespace Assets.Scripts.Managers {
 
             CurrentGameState = GameState.NotStarted;
             Time.timeScale = 1;
+
+            _wizardHealthBarAnimator = WizardHealthBar.gameObject.GetComponent<Animator>();
         }
 
 
@@ -52,6 +56,8 @@ namespace Assets.Scripts.Managers {
             if (WizardHealthBar.Health < 0.9f) {
                 ResetPlayEnergyFullCoolDown();
             }
+
+            _wizardHealthBarAnimator.SetFloat("Health", WizardHealthBar.Health);
         }
 
         public void UseWizardEnergy(float amount) {
@@ -63,7 +69,7 @@ namespace Assets.Scripts.Managers {
 
         public void GainWizardEnergy(float amount) {
             WizardHealthBar.Health += amount;
-            if (WizardHealthBar.Health > 1.0f) {
+            if (WizardHealthBar.Health >= 1.0f) {
                 WizardHealthBar.Health = 1.0f;
                 // TODO: Add sound indicating energy fully charged
 
