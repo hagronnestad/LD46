@@ -48,11 +48,13 @@ namespace Assets.Scripts.Managers {
             _wizardHealthBarAnimator.SetFloat("Health", WizardHealthBar.Health);
         }
 
+        private void LateUpdate() {
+            if (WizardHealthBar.Health == 0) GameOver();
+        }
+
         public void UseWizardEnergy(float amount) {
             WizardHealthBar.Health -= amount;
             if (WizardHealthBar.Health < 0f) WizardHealthBar.Health = 0f;
-
-            if (WizardHealthBar.Health == 0) GameOver();
         }
 
         public void GainWizardEnergy(float amount) {
