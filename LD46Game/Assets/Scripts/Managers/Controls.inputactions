@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "AttackDirection",
+                    "name": "Basic Attack",
                     "type": "PassThrough",
                     "id": "bfac961e-7345-412b-9c8d-9607bc805786",
                     "expectedControlType": "Vector2",
@@ -85,7 +85,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Main Control Scheme",
-                    "action": "AttackDirection",
+                    "action": "Basic Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -96,7 +96,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AttackDirection",
+                    "action": "Basic Attack",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -107,7 +107,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Main Control Scheme",
-                    "action": "AttackDirection",
+                    "action": "Basic Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -118,7 +118,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Main Control Scheme",
-                    "action": "AttackDirection",
+                    "action": "Basic Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -129,7 +129,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Main Control Scheme",
-                    "action": "AttackDirection",
+                    "action": "Basic Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -140,7 +140,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Main Control Scheme",
-                    "action": "AttackDirection",
+                    "action": "Basic Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
