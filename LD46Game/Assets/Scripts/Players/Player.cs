@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using Assets.Scripts.Managers;
 using Unity.Mathematics;
+using Assets.Scripts.Systems;
 
 namespace Assets.Scripts.Players {
     public class Player : MonoBehaviour {
@@ -24,7 +25,7 @@ namespace Assets.Scripts.Players {
         public float attackForce;
         float attackTimer = .25f;
 
-        public ParticleSystem chargedAttackParticleSystem;
+        public GameObject chargedAttackParticleSystem;
 
         public float moveSpeed;
 
@@ -35,6 +36,7 @@ namespace Assets.Scripts.Players {
             controls = new Controls();
             controls.PlayerActions.Move.performed += ctx => movementVector = ctx.ReadValue<Vector2>();
             controls.PlayerActions.BasicAttack.performed += ctx => attackVector = ctx.ReadValue<Vector2>();
+            controls.PlayerActions.ChargedAttack.performed += ctx => UseChargeAttack();
             playerRigidbody = transform.GetComponent<Rigidbody2D>();
             playerCollider = transform.GetComponent<BoxCollider2D>();
         }
@@ -113,7 +115,8 @@ namespace Assets.Scripts.Players {
 
             enemies.ForEach(x => x.Damage(1.0f));
 
-            chargedAttackParticleSystem.Play();
+            var caps = Instantiate(chargedAttackParticleSystem, transform).GetComponent<ChargedAttackParticleSystem>();
+            caps.Play();
 
             //// Debug circle to show radius
             //var go2 = new GameObject { name = "Circle2" };

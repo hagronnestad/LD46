@@ -20,6 +20,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Charged Attack",
+                    "type": "PassThrough",
+                    "id": "839b38fb-5dac-48ae-904e-1eebc5576948",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -143,6 +151,17 @@
                     "action": "Basic Attack",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "028472f4-72f9-4214-ae4f-6ea132d92e9f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Main Control Scheme",
+                    "action": "Charged Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

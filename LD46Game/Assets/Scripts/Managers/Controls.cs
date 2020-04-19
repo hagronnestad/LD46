@@ -33,6 +33,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Charged Attack"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""839b38fb-5dac-48ae-904e-1eebc5576948"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -156,6 +164,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Basic Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""028472f4-72f9-4214-ae4f-6ea132d92e9f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Main Control Scheme"",
+                    ""action"": ""Charged Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -172,6 +191,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
         m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
         m_PlayerActions_BasicAttack = m_PlayerActions.FindAction("Basic Attack", throwIfNotFound: true);
+        m_PlayerActions_ChargedAttack = m_PlayerActions.FindAction("Charged Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -223,12 +243,14 @@ public class @Controls : IInputActionCollection, IDisposable
     private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
     private readonly InputAction m_PlayerActions_Move;
     private readonly InputAction m_PlayerActions_BasicAttack;
+    private readonly InputAction m_PlayerActions_ChargedAttack;
     public struct PlayerActionsActions
     {
         private @Controls m_Wrapper;
         public PlayerActionsActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
         public InputAction @BasicAttack => m_Wrapper.m_PlayerActions_BasicAttack;
+        public InputAction @ChargedAttack => m_Wrapper.m_PlayerActions_ChargedAttack;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -244,6 +266,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @BasicAttack.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBasicAttack;
                 @BasicAttack.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBasicAttack;
                 @BasicAttack.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnBasicAttack;
+                @ChargedAttack.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChargedAttack;
+                @ChargedAttack.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChargedAttack;
+                @ChargedAttack.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnChargedAttack;
             }
             m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -254,6 +279,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @BasicAttack.started += instance.OnBasicAttack;
                 @BasicAttack.performed += instance.OnBasicAttack;
                 @BasicAttack.canceled += instance.OnBasicAttack;
+                @ChargedAttack.started += instance.OnChargedAttack;
+                @ChargedAttack.performed += instance.OnChargedAttack;
+                @ChargedAttack.canceled += instance.OnChargedAttack;
             }
         }
     }
@@ -271,5 +299,6 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnBasicAttack(InputAction.CallbackContext context);
+        void OnChargedAttack(InputAction.CallbackContext context);
     }
 }
