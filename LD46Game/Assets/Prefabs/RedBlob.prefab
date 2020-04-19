@@ -300,6 +300,7 @@ MonoBehaviour:
   sightRange: 2000
   player: {fileID: 0}
   agro: 0
+  deathSplatter: {fileID: 0}
 --- !u!1001 &7930877420696503785
 PrefabInstance:
   m_ObjectHideFlags: 0
