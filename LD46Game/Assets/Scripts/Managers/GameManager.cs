@@ -11,6 +11,7 @@ namespace Assets.Scripts.Managers {
 
         public UiHealth WizardHealthBar;
         public ScrollPopUp ScrollPopUp;
+        public UiPauseMenu PauseMenu;
 
         public GameState CurrentGameState;
 
@@ -18,6 +19,7 @@ namespace Assets.Scripts.Managers {
             if (Instance == null) Instance = this;
 
             CurrentGameState = GameState.NotStarted;
+            Time.timeScale = 1;
         }
 
 
@@ -35,11 +37,11 @@ namespace Assets.Scripts.Managers {
             if (Input.GetKeyDown(KeyCode.Escape)) {
 
                 if (CurrentGameState != GameState.Paused && CurrentGameState != GameState.GameOver) {
-                    PauseGame();
+                    PauseMenu.OpenPauseMenu();
                 }
 
                 else {
-                    ContinueGame();
+                    PauseMenu.ClosePauseMenu();
                 }
 
             }
@@ -69,18 +71,24 @@ namespace Assets.Scripts.Managers {
                 "You did not keep it alive!"
 
             }, () => {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                RestartGame();
             });
         }
 
 
-        private void PauseGame() {
+        public void PauseGame() {
             CurrentGameState = GameState.Paused;
             Time.timeScale = 0;
         }
-        private void ContinueGame() {
+
+        public void ResumeGame() {
             CurrentGameState = GameState.Playing;
             Time.timeScale = 1;
         }
+
+        public void RestartGame() {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 }
