@@ -34,17 +34,17 @@ namespace Assets.Scripts.Managers {
         // Update is called once per frame
         void Update() {
 
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick 1 button 7")) {
+            //if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("joystick 1 button 7")) {
 
-                if (CurrentGameState != GameState.Paused && CurrentGameState != GameState.GameOver) {
-                    PauseMenu.OpenPauseMenu();
-                }
+            //    if (CurrentGameState != GameState.Paused && CurrentGameState != GameState.GameOver) {
+            //        PauseMenu.OpenPauseMenu();
+            //    }
 
-                else {
-                    PauseMenu.ClosePauseMenu();
-                }
+            //    else {
+            //        PauseMenu.ClosePauseMenu();
+            //    }
 
-            }
+            //}
 
         }
 

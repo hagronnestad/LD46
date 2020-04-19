@@ -9,8 +9,10 @@ using Unity.Mathematics;
 
 namespace Assets.Scripts.Players {
     public class Player : MonoBehaviour {
+        PlayerInput playerInput;
 
         Vector2 movementVector;
+        Vector2 attackVector;
         Vector2 mousePos;
 
         public Animator animator;
@@ -35,21 +37,21 @@ namespace Assets.Scripts.Players {
         }
 
         void Update() {
-            movementVector.x = Input.GetAxisRaw("Horizontal");
-            movementVector.y = Input.GetAxisRaw("Vertical");
+            //movementVector.x = Input.GetAxisRaw("Horizontal");
+            //movementVector.y = Input.GetAxisRaw("Vertical");
 
-            mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+            //mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
             animator.SetFloat("Horizontal", movementVector.x);
             animator.SetFloat("Vertical", movementVector.y);
             animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1) || Input.GetKeyDown("joystick 1 button 1")) {
-                UseChargeAttack();
-            }
-            if(Input.GetMouseButtonDown(0) || Input.GetKeyDown("joystick 1 button 0")) {
-                UseBasicAttack();
-            }
+            //if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1) || Input.GetKeyDown("joystick 1 button 1")) {
+            //    UseChargeAttack();
+            //}
+            //if(Input.GetMouseButtonDown(0) || Input.GetKeyDown("joystick 1 button 0")) {
+            //    UseBasicAttack();
+            //}
         }
 
         void FixedUpdate() {
@@ -59,18 +61,18 @@ namespace Assets.Scripts.Players {
                 GameManager.Instance.UseWizardEnergy(0.001f);
             }
 
-            Vector2 lookDirection = mousePos - playerRigidbody.position;
-            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-            playerRigidbody.rotation = angle;
+            //Vector2 lookDirection = mousePos - playerRigidbody.position;
+            //float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+            //playerRigidbody.rotation = angle;
 
-            Vector3 playerLocalScale = Vector3.one;
-            if(angle > 90 || angle < -90) {
-                playerLocalScale.y = -1f;
-            } else {
-                playerLocalScale.y = +1f;
-            }
-            transform.localScale = playerLocalScale;
-            Debug.Log(angle);
+            //Vector3 playerLocalScale = Vector3.one;
+            //if(angle > 90 || angle < -90) {
+            //    playerLocalScale.y = -1f;
+            //} else {
+            //    playerLocalScale.y = +1f;
+            //}
+            //transform.localScale = playerLocalScale;
+            //Debug.Log(angle);
         }
 
         void OnCollisionEnter2D(Collision2D collision) {

@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Controls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Managers/Controls.inputactions'
 
 using System;
 using System.Collections;
@@ -15,41 +15,30 @@ public class @Controls : IInputActionCollection, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""Player Controls"",
-            ""id"": ""8a35182d-35c0-4153-ba53-f0f0375a00d3"",
+            ""name"": ""Player Actions"",
+            ""id"": ""4c1940db-9dc1-4a4a-8c14-923acf6e7ff3"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""2fd2db6b-97f7-4ed4-930b-e05b645acd60"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""6b3018bc-4206-4879-8a61-ac356e32be51"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""a5ba0619-b220-4cbd-ba2a-2d0ff5a2063a"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""AttackDirection"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""bfac961e-7345-412b-9c8d-9607bc805786"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""82427840-80d3-4de6-85fe-b993acc6fdc0"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""WASD"",
-                    ""id"": ""fca2717f-6419-4db3-9bc3-a5ef19f1b14c"",
+                    ""id"": ""e8e72919-dc7f-4cb3-b129-3ddb91ad8a5e"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -60,134 +49,129 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""2bb1792b-10fa-43bb-96f7-adb2ab780134"",
+                    ""id"": ""3981d98b-d2af-4c9a-8474-aca13d6ec1b4"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Main Control Scheme"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""111ca2e4-8d4a-40a3-9461-1e1bdd281b1c"",
+                    ""id"": ""907d861e-63f7-49e2-82d7-e2cf3cd1e50a"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Main Control Scheme"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""0e764076-d445-46dd-9019-8f54249f466d"",
+                    ""id"": ""0f008e71-1e34-4ef9-9f4c-32004a1b8018"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Main Control Scheme"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""ea9086e7-6daf-4a04-af7e-90b9260699dd"",
+                    ""id"": ""639695bd-f68e-4760-8414-b83a0ea3444d"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Main Control Scheme"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Arrow Keys"",
-                    ""id"": ""dcb8eede-6789-4d37-bf5e-1d87732413ce"",
+                    ""name"": """",
+                    ""id"": ""7f837b95-ef7e-4a67-9a4a-358ae7a38ce4"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Main Control Scheme"",
+                    ""action"": ""AttackDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""3fcbad5b-7e35-4290-b905-a0c4d195277d"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""AttackDirection"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""f529afd6-e54c-4b7e-bc21-2b6410649dcd"",
+                    ""id"": ""b00789fd-6daa-4abd-8df5-ee6fe8437930"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": ""Main Control Scheme"",
+                    ""action"": ""AttackDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""aeefb70d-3aea-4ba5-8a76-4e810bafa44d"",
+                    ""id"": ""7e9eb88a-1c1c-48ac-a4ab-c0dae7f6dc83"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": ""Main Control Scheme"",
+                    ""action"": ""AttackDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""380a9c9c-a467-4409-ab3b-2ca58f06dfdb"",
+                    ""id"": ""f70f3efb-cb32-4c67-944c-d520f89c6c4a"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": ""Main Control Scheme"",
+                    ""action"": ""AttackDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""32691b7a-6ea7-4afe-a883-7644b965f21f"",
+                    ""id"": ""48cfe195-0c12-4378-adb7-278c941a6b80"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
+                    ""groups"": ""Main Control Scheme"",
+                    ""action"": ""AttackDirection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a38bdab2-6f7e-46d6-a684-e12c3534247d"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""981696bf-f778-453a-b169-586202d33c3f"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Main Control Scheme"",
+            ""bindingGroup"": ""Main Control Scheme"",
+            ""devices"": []
+        }
+    ]
 }");
-        // Player Controls
-        m_PlayerControls = asset.FindActionMap("Player Controls", throwIfNotFound: true);
-        m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
-        m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
+        // Player Actions
+        m_PlayerActions = asset.FindActionMap("Player Actions", throwIfNotFound: true);
+        m_PlayerActions_Move = m_PlayerActions.FindAction("Move", throwIfNotFound: true);
+        m_PlayerActions_AttackDirection = m_PlayerActions.FindAction("AttackDirection", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -234,49 +218,58 @@ public class @Controls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player Controls
-    private readonly InputActionMap m_PlayerControls;
-    private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
-    private readonly InputAction m_PlayerControls_Move;
-    private readonly InputAction m_PlayerControls_Jump;
-    public struct PlayerControlsActions
+    // Player Actions
+    private readonly InputActionMap m_PlayerActions;
+    private IPlayerActionsActions m_PlayerActionsActionsCallbackInterface;
+    private readonly InputAction m_PlayerActions_Move;
+    private readonly InputAction m_PlayerActions_AttackDirection;
+    public struct PlayerActionsActions
     {
         private @Controls m_Wrapper;
-        public PlayerControlsActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
-        public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
+        public PlayerActionsActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_PlayerActions_Move;
+        public InputAction @AttackDirection => m_Wrapper.m_PlayerActions_AttackDirection;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerControlsActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerControlsActions instance)
+        public static implicit operator InputActionMap(PlayerActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerActionsActions instance)
         {
-            if (m_Wrapper.m_PlayerControlsActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerActionsActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
-                @Jump.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
+                @Move.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnMove;
+                @AttackDirection.started -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnAttackDirection;
+                @AttackDirection.performed -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnAttackDirection;
+                @AttackDirection.canceled -= m_Wrapper.m_PlayerActionsActionsCallbackInterface.OnAttackDirection;
             }
-            m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerActionsActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @AttackDirection.started += instance.OnAttackDirection;
+                @AttackDirection.performed += instance.OnAttackDirection;
+                @AttackDirection.canceled += instance.OnAttackDirection;
             }
         }
     }
-    public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
-    public interface IPlayerControlsActions
+    public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+    private int m_MainControlSchemeSchemeIndex = -1;
+    public InputControlScheme MainControlSchemeScheme
+    {
+        get
+        {
+            if (m_MainControlSchemeSchemeIndex == -1) m_MainControlSchemeSchemeIndex = asset.FindControlSchemeIndex("Main Control Scheme");
+            return asset.controlSchemes[m_MainControlSchemeSchemeIndex];
+        }
+    }
+    public interface IPlayerActionsActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnAttackDirection(InputAction.CallbackContext context);
     }
 }
