@@ -48,9 +48,9 @@ namespace Assets.Scripts.Enemies {
                 Damage(0.5f);
                 GameManager.Instance.GainWizardEnergy(0.1f);
                 
-                if (Health <= 0) {
-                    Destroy(this.gameObject);
-                }
+                //if (Health <= 0) {
+                //    Destroy(this.gameObject);
+                //}
             }
         }
         void FlipSprite(float moveVec) {

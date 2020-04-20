@@ -295,12 +295,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298d392a58162414ebaef9136f222003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BloodSpatterDamage: {fileID: 2936250595761932802, guid: 559a3e92b8c09fb41ab30d6e3d1fc85c,
+    type: 3}
+  BloodSpatterKill: {fileID: 1139725426653057332, guid: 46178d96459ea5d41950d91b14ccb2db,
+    type: 3}
   Health: 1
   rayCastPoint: {fileID: 0}
   speed: 2.5
   sightRange: 2000
   player: {fileID: 0}
-  agro: 0
 --- !u!1001 &5594761577478031509
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,8 +5,14 @@ using UnityEngine;
 namespace Assets.Scripts.Enemies {
     public class EnemyBase : MonoBehaviour, IHealthSystem {
 
+        public ParticleSystem BloodSpatterDamage;
+        public ParticleSystem BloodSpatterKill;
+
         public void Kill() {
             GameManager.Instance.GainWizardEnergy(0.05f);
+
+            var bs = Instantiate(BloodSpatterKill, transform.position, Quaternion.identity);
+            Destroy(bs.gameObject, bs.main.duration);
 
             Destroy(gameObject);
         }
@@ -19,6 +25,9 @@ namespace Assets.Scripts.Enemies {
         public void Damage(float amount) {
             Health -= amount;
             if (Health < 0f) Health = 0f;
+
+            var bs = Instantiate(BloodSpatterDamage, transform.position, Quaternion.identity);
+            Destroy(bs.gameObject, bs.main.duration);
 
             if (Health == 0) Kill();
         }
