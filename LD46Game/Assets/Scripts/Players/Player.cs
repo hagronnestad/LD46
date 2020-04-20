@@ -57,7 +57,6 @@ namespace Assets.Scripts.Players {
                 attackTimer -= Time.deltaTime;
             }
             if (attackVector.magnitude > 0.1f && attackTimer == 0f) {
-               // attackPoint.rotation.y = 90;
                 UseBasicAttack();
                 attackTimer = .5f;
             }
@@ -87,7 +86,7 @@ namespace Assets.Scripts.Players {
         }
 
         public void UseBasicAttack() {
-            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, transform.rotation,transform);
+            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, transform.localRotation,transform);
             Rigidbody2D attackObjectRB = attackObject.GetComponent<Rigidbody2D>();
             attackObjectRB.AddForce(transform.forward * attackForce, ForceMode2D.Impulse);
 
