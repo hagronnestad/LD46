@@ -297,11 +297,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   rayCastPoint: {fileID: 0}
-  speed: 1
+  speed: 2.5
   sightRange: 2000
   player: {fileID: 0}
   agro: 0
-  deathSplatter: {fileID: 0}
 --- !u!1001 &5594761577478031509
 PrefabInstance:
   m_ObjectHideFlags: 0

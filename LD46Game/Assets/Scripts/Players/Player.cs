@@ -15,11 +15,10 @@ namespace Assets.Scripts.Players {
 
         public Vector2 movementVector;
         public Vector2 attackVector;
-        public bool facingRight;
+        bool facingRight;
         public Animator animator;
 
         Rigidbody2D playerRigidbody;
-        BoxCollider2D playerCollider;
         public Transform attackPoint;
         public GameObject attackPrefab;
 
@@ -41,7 +40,6 @@ namespace Assets.Scripts.Players {
             controls.PlayerActions.ChargedAttack.performed += ctx => UseChargeAttack();
             controls.PlayerActions.PauseMenu.performed += ctx => GameManager.Instance.TogglePauseMenu();
             playerRigidbody = transform.GetComponent<Rigidbody2D>();
-            playerCollider = transform.GetComponent<BoxCollider2D>();
         }
 
         void Update() {
@@ -87,9 +85,10 @@ namespace Assets.Scripts.Players {
         }
 
         public void UseBasicAttack() {
-            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, transform.localRotation,transform);
+            
+            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, attackPoint.localRotation,transform);
             Rigidbody2D attackObjectRB = attackObject.GetComponent<Rigidbody2D>();
-            attackObjectRB.AddForce(transform.forward * attackForce, ForceMode2D.Impulse);
+            attackObjectRB.AddForce(attackPoint.forward * attackForce, ForceMode2D.Impulse);
 
             GameManager.Instance.UseWizardEnergy(0.05f);
             AudioManager.Instance.Play("attack");

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 1
   rayCastPoint: {fileID: 0}
-  speed: 1
+  speed: 2.5
   sightRange: 2000
   player: {fileID: 0}
   agro: 0

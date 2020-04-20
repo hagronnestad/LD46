@@ -13,8 +13,8 @@ public class RoomSwitch : MonoBehaviour
         followCamera = Camera.main.GetComponent<FollowCamera>();
     }
 
-     void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.CompareTag("Player")) {
+     void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.tag == "Player") {
             followCamera.minCamPos.x += cameraSwitch.x;
             followCamera.maxCamPos.x = 100;
             followCamera.minCamPos.y += cameraSwitch.y;

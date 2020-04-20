@@ -12,7 +12,8 @@ namespace Assets.Scripts.Enemies {
         public float speed = 1f;
         public float sightRange;
         public Transform player;
-        public bool agro;
+        bool agro;
+        bool facingRight;
         Rigidbody2D enemyRigidBody;
 
         void Start() {
@@ -24,6 +25,7 @@ namespace Assets.Scripts.Enemies {
             Vector2 direction = player.position - transform.position;
             direction.Normalize();
             movement = direction;
+            FlipSprite(-movement.x);
         }
 
         void FixedUpdate() {
@@ -43,12 +45,20 @@ namespace Assets.Scripts.Enemies {
         }
         void OnCollisionEnter2D(Collision2D collision) {
             if (collision.gameObject.tag == "Basic Attack") {
-                Damage(0.1f);
+                Damage(0.5f);
                 GameManager.Instance.GainWizardEnergy(0.1f);
                 
                 if (Health <= 0) {
                     Destroy(this.gameObject);
                 }
+            }
+        }
+        void FlipSprite(float moveVec) {
+            if (moveVec > 0 && !facingRight || moveVec < 0 && facingRight) {
+                facingRight = !facingRight;
+                Vector2 spriteScale = transform.localScale;
+                spriteScale.x *= -1;
+                transform.localScale = spriteScale;
             }
         }
         // line of sight code, might come in handy later
