@@ -47,7 +47,6 @@ namespace Assets.Scripts.Players {
            
             animator.SetFloat("Horizontal", movementVector.x);
             animator.SetFloat("Vertical", movementVector.y);
-            animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
             FlipPlayer(movementVector.x, attackVector.x);
 
@@ -67,7 +66,7 @@ namespace Assets.Scripts.Players {
             playerRigidbody.MovePosition(playerRigidbody.position + movementVector * moveSpeed * Time.fixedDeltaTime);
 
             if (Mathf.Abs(movementVector.x) > 0.1 || Mathf.Abs(movementVector.y) > 0.1) {
-                GameManager.Instance.UseWizardEnergy(0.001f);
+                //GameManager.Instance.UseWizardEnergy(0.001f);
             }
         }
 
