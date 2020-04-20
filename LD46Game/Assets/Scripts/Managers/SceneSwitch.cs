@@ -21,6 +21,9 @@ public class SceneSwitch : MonoBehaviour
         yield return new WaitUntil(() => blackSquare.color.a >= 1);
         SceneManager.LoadScene(sceneId + 1);
     }
+    void OnTriggerEnter2D(Collider2D collision) {
+        SceneManager.LoadScene(5);
+    }
     private void OnEnable() {
         controls.Enable();
     }

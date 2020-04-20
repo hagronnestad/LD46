@@ -96,10 +96,21 @@
                 },
                 {
                     "name": "",
-                    "id": "7f837b95-ef7e-4a67-9a4a-358ae7a38ce4",
-                    "path": "",
+                    "id": "fc124b2f-5a47-4989-86a7-4a677968b672",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f837b95-ef7e-4a67-9a4a-358ae7a38ce4",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "StickDeadzone",
                     "groups": "Main Control Scheme",
                     "action": "Basic Attack",
                     "isComposite": false,
@@ -173,11 +184,33 @@
                 },
                 {
                     "name": "",
+                    "id": "3d3b3338-7252-41c2-afaf-075dcb93b1a9",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Charged Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "208af83d-8688-4fb5-8f7c-0df1e1218679",
                     "path": "<Keyboard>/escape",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Main Control Scheme",
+                    "action": "Pause Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e431f72b-3490-4bfc-827d-7c7d9a84d4dd",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Pause Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
