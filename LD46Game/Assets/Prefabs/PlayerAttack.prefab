@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3685513539099409868}
   m_Layer: 0
   m_Name: PlayerAttack
-  m_TagString: Untagged
+  m_TagString: Basic Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,5 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f35fa9b378bc5459c696c1c53fe367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
-  lifeLength: 0.1
+  lifeLength: 0.25
