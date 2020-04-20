@@ -82,8 +82,7 @@ namespace Assets.Scripts.Managers {
             Time.timeScale = 0;
 
             ScrollPopUp.OpenScroll("Game Over", new List<string>() {
-                "Oh no! You have greatly failed your quest by draining all the energy and sacrificing the mage in the process!",
-                "You did not keep it alive!"
+                "Thee drained all the wizards energy!"
 
             }, () => {
                 RestartGame();

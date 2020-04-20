@@ -3147,6 +3147,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1676175547}
     m_Modifications:
+    - target: {fileID: 5546347907078461553, guid: b3eded46c5bfcf6408314b9ccb4a2320,
+        type: 3}
+      propertyPath: m_Text
+      value: RESTART
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546347907386419301, guid: b3eded46c5bfcf6408314b9ccb4a2320,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 118
+      objectReference: {fileID: 0}
     - target: {fileID: 5546347907629508565, guid: b3eded46c5bfcf6408314b9ccb4a2320,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3176,6 +3186,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546347907818546795, guid: b3eded46c5bfcf6408314b9ccb4a2320,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -54
       objectReference: {fileID: 0}
     - target: {fileID: 5546347907840595484, guid: b3eded46c5bfcf6408314b9ccb4a2320,
         type: 3}
@@ -3296,6 +3311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5546347908315472282, guid: b3eded46c5bfcf6408314b9ccb4a2320,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3eded46c5bfcf6408314b9ccb4a2320, type: 3}

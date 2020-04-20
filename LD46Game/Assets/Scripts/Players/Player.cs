@@ -1,11 +1,8 @@
 ﻿using Assets.Scripts.Enemies;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using Assets.Scripts.Extensions;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
 using Assets.Scripts.Managers;
-using Unity.Mathematics;
 using Assets.Scripts.Systems;
 using Assets.Scripts.Audio;
 

@@ -38,7 +38,7 @@ namespace Assets.Scripts.Ui {
 
 
         private void Awake() {
-            ContinueButton.onClick.AddListener(OnClick_Continue);
+            //ContinueButton.onClick.AddListener(OnClick_Continue);
         }
 
         public void OnClick_Continue() {
