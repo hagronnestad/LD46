@@ -50,6 +50,7 @@ namespace Assets.Scripts.Players {
             animator.SetFloat("Speed", movementVector.sqrMagnitude);
 
             FlipPlayer(movementVector.x, attackVector.x);
+
             if (attackTimer < 0 || attackTimer > .5f) {
                 attackTimer = 0;
             } else {
