@@ -11,11 +11,6 @@ namespace Assets.Scripts.Ui {
         public Image frame;
         public Image fill;
 
-        // Start is called before the first frame update
-        void Start() {
-
-        }
-
         // Update is called once per frame
         void Update() {
             fill.rectTransform.sizeDelta = new Vector2(frame.rectTransform.rect.width, frame.rectTransform.rect.height * Health);

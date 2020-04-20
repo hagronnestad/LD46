@@ -15,8 +15,6 @@ namespace Assets.Scripts.Enemies {
         public bool agro;
         Rigidbody2D enemyRigidBody;
 
-        public GameObject deathSplatter;
-
         void Start() {
             enemyRigidBody = this.GetComponent<Rigidbody2D>();
             player = FindObjectOfType<Players.Player>().transform;
@@ -26,8 +24,6 @@ namespace Assets.Scripts.Enemies {
             Vector2 direction = player.position - transform.position;
             direction.Normalize();
             movement = direction;
-
-           
         }
 
         void FixedUpdate() {
@@ -49,8 +45,8 @@ namespace Assets.Scripts.Enemies {
             if (collision.gameObject.tag == "Basic Attack") {
                 Damage(0.1f);
                 GameManager.Instance.GainWizardEnergy(0.1f);
+                
                 if (Health <= 0) {
-                    Instantiate(deathSplatter, transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
             }

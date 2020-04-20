@@ -48,19 +48,9 @@ namespace Assets.Scripts.Players {
             animator.SetFloat("Horizontal", movementVector.x);
             animator.SetFloat("Vertical", movementVector.y);
             animator.SetFloat("Speed", movementVector.sqrMagnitude);
-            Debug.Log(movementVector);
-        }
 
-        void FixedUpdate() {
-            playerRigidbody.MovePosition(playerRigidbody.position + movementVector * moveSpeed * Time.fixedDeltaTime);
+            FlipPlayer(movementVector.x, attackVector.x);
 
-            if (Mathf.Abs(movementVector.x) > 0.1 || Mathf.Abs(movementVector.y) > 0.1) {
-                GameManager.Instance.UseWizardEnergy(0.001f);
-            }
-
-            float angle = Mathf.Atan2(movementVector.y, movementVector.x) * Mathf.Rad2Deg;
-
-            FlipPlayer(movementVector.x,attackVector.x);
             if (attackTimer < 0 || attackTimer > .5f) {
                 attackTimer = 0;
             } else {
@@ -69,6 +59,15 @@ namespace Assets.Scripts.Players {
             if (attackVector.magnitude > 0.1f && attackTimer == 0f) {
                 UseBasicAttack();
                 attackTimer = .25f;
+            }
+
+        }
+
+        void FixedUpdate() {
+            playerRigidbody.MovePosition(playerRigidbody.position + movementVector * moveSpeed * Time.fixedDeltaTime);
+
+            if (Mathf.Abs(movementVector.x) > 0.1 || Mathf.Abs(movementVector.y) > 0.1) {
+                GameManager.Instance.UseWizardEnergy(0.001f);
             }
         }
 
