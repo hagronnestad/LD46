@@ -76,8 +76,9 @@ namespace Assets.Scripts.Players {
         }
 
         void OnCollisionStay2D(Collision2D collision) {
-            if(collision.gameObject.tag == "Enemy") {
+            if(collision.gameObject.tag == "Enemy" && enemyAttackTimer == 0) {
                 GameManager.Instance.UseWizardEnergy(0.1f);
+                enemyAttackTimer = 2f;
             }
             if(collision.gameObject.tag== "Boss" && enemyAttackTimer == 0) {
                 GameManager.Instance.UseWizardEnergy(0.2f);
