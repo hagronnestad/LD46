@@ -241,6 +241,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Escape"",
+                    ""type"": ""Button"",
+                    ""id"": ""76249e2a-bdcc-4fdd-9151-1b1d816feb6f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -252,6 +260,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""256e2905-fb46-4448-a224-e235f8ae188b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -275,6 +294,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // UI Actions
         m_UIActions = asset.FindActionMap("UI Actions", throwIfNotFound: true);
         m_UIActions_Enter = m_UIActions.FindAction("Enter", throwIfNotFound: true);
+        m_UIActions_Escape = m_UIActions.FindAction("Escape", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -382,11 +402,13 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_UIActions;
     private IUIActionsActions m_UIActionsActionsCallbackInterface;
     private readonly InputAction m_UIActions_Enter;
+    private readonly InputAction m_UIActions_Escape;
     public struct UIActionsActions
     {
         private @Controls m_Wrapper;
         public UIActionsActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Enter => m_Wrapper.m_UIActions_Enter;
+        public InputAction @Escape => m_Wrapper.m_UIActions_Escape;
         public InputActionMap Get() { return m_Wrapper.m_UIActions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -399,6 +421,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Enter.started -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEnter;
                 @Enter.performed -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEnter;
                 @Enter.canceled -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEnter;
+                @Escape.started -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEscape;
+                @Escape.performed -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEscape;
+                @Escape.canceled -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEscape;
             }
             m_Wrapper.m_UIActionsActionsCallbackInterface = instance;
             if (instance != null)
@@ -406,6 +431,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Enter.started += instance.OnEnter;
                 @Enter.performed += instance.OnEnter;
                 @Enter.canceled += instance.OnEnter;
+                @Escape.started += instance.OnEscape;
+                @Escape.performed += instance.OnEscape;
+                @Escape.canceled += instance.OnEscape;
             }
         }
     }
@@ -429,5 +457,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IUIActionsActions
     {
         void OnEnter(InputAction.CallbackContext context);
+        void OnEscape(InputAction.CallbackContext context);
     }
 }

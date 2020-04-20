@@ -41,7 +41,7 @@ namespace Assets.Scripts.Ui {
             ContinueButton.onClick.AddListener(OnClick_Continue);
         }
 
-        private void OnClick_Continue() {
+        public void OnClick_Continue() {
             _currentTextIndex++;
 
             if (_currentTextIndex == _texts.Count) {
@@ -53,16 +53,5 @@ namespace Assets.Scripts.Ui {
                 PageNo.text = $"{_currentTextIndex + 1}/{_texts.Count}";
             }
         }
-
-        // Start is called before the first frame update
-        void Start() {
-
-        }
-
-        // Update is called once per frame
-        void Update() {
-
-        }
     }
-
 }

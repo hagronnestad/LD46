@@ -3170,7 +3170,7 @@ PrefabInstance:
     - target: {fileID: 5546347907629508565, guid: b3eded46c5bfcf6408314b9ccb4a2320,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseScroll
+      value: OnClick_Continue
       objectReference: {fileID: 0}
     - target: {fileID: 5546347907629508565, guid: b3eded46c5bfcf6408314b9ccb4a2320,
         type: 3}
