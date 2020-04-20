@@ -24,7 +24,8 @@ namespace Assets.Scripts.Players {
         public GameObject attackPrefab;
 
         public float attackForce;
-        float attackTimer = .25f;
+        float attackTimer = .5f;
+        float enemyAttackTimer = 0f;
 
         public GameObject chargedAttackParticleSystem;
 
@@ -57,9 +58,13 @@ namespace Assets.Scripts.Players {
             }
             if (attackVector.magnitude > 0.1f && attackTimer == 0f) {
                 UseBasicAttack();
-                attackTimer = .25f;
+                attackTimer = .5f;
             }
-
+            if (enemyAttackTimer < 0 || enemyAttackTimer > 2f) {
+                enemyAttackTimer = 0f;
+            } else {
+                enemyAttackTimer -= Time.deltaTime;
+            }
         }
 
         void FixedUpdate() {
@@ -70,9 +75,13 @@ namespace Assets.Scripts.Players {
             }
         }
 
-        void OnCollisionEnter2D(Collision2D collision) {
+        void OnCollisionStay2D(Collision2D collision) {
             if(collision.gameObject.tag == "Enemy") {
-                GameManager.Instance.UseWizardEnergy(0.05f);
+                GameManager.Instance.UseWizardEnergy(0.1f);
+            }
+            if(collision.gameObject.tag== "Boss" && enemyAttackTimer == 0) {
+                GameManager.Instance.UseWizardEnergy(0.2f);
+                enemyAttackTimer = 2f;
             }
         }
 
