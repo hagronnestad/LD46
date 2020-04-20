@@ -29,7 +29,6 @@ namespace Assets.Scripts.Managers {
             _wizardHealthBarAnimator = WizardHealthBar.gameObject.GetComponent<Animator>();
         }
 
-
         // Start is called before the first frame update
         void Start() {
             //ScrollPopUp.OpenScroll("Test", new List<string>() {
