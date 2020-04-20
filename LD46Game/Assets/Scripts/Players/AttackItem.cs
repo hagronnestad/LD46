@@ -19,7 +19,7 @@ public class AttackItem : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag !=  "Basic Attack") {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

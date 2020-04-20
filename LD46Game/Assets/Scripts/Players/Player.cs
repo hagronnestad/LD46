@@ -86,7 +86,7 @@ namespace Assets.Scripts.Players {
 
         public void UseBasicAttack() {
             
-            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, attackPoint.localRotation,transform);
+            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, attackPoint.localRotation, transform);
             Rigidbody2D attackObjectRB = attackObject.GetComponent<Rigidbody2D>();
             attackObjectRB.AddForce(attackPoint.forward * attackForce, ForceMode2D.Impulse);
 
@@ -94,6 +94,7 @@ namespace Assets.Scripts.Players {
             AudioManager.Instance.Play("attack");
             Camera.main.GetComponent<CameraShake>().DoShake(0.01f, 0.002f);
         }
+
         void UseChargeAttack() {
 
             if (GameManager.Instance.WizardHealthBar.Health < 0.9f) {
