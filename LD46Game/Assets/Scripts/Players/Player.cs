@@ -13,9 +13,9 @@ namespace Assets.Scripts.Players {
     public class Player : MonoBehaviour {
         Controls controls;
 
-        Vector2 movementVector;
-        Vector2 attackVector;
-        bool facingRight;
+        public Vector2 movementVector;
+        public Vector2 attackVector;
+        public bool facingRight;
         public Animator animator;
 
         Rigidbody2D playerRigidbody;
@@ -57,6 +57,7 @@ namespace Assets.Scripts.Players {
                 attackTimer -= Time.deltaTime;
             }
             if (attackVector.magnitude > 0.1f && attackTimer == 0f) {
+               // attackPoint.rotation.y = 90;
                 UseBasicAttack();
                 attackTimer = .5f;
             }
@@ -71,7 +72,7 @@ namespace Assets.Scripts.Players {
             playerRigidbody.MovePosition(playerRigidbody.position + movementVector * moveSpeed * Time.fixedDeltaTime);
 
             if (Mathf.Abs(movementVector.x) > 0.1 || Mathf.Abs(movementVector.y) > 0.1) {
-                //GameManager.Instance.UseWizardEnergy(0.001f);
+                GameManager.Instance.UseWizardEnergy(0.001f);
             }
         }
 
@@ -86,9 +87,9 @@ namespace Assets.Scripts.Players {
         }
 
         public void UseBasicAttack() {
-            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, Quaternion.identity);
+            GameObject attackObject =  Instantiate(attackPrefab, attackPoint.position, transform.rotation,transform);
             Rigidbody2D attackObjectRB = attackObject.GetComponent<Rigidbody2D>();
-            attackObjectRB.AddForce(transform.localRotation.eulerAngles * attackForce, ForceMode2D.Impulse);
+            attackObjectRB.AddForce(transform.forward * attackForce, ForceMode2D.Impulse);
 
             GameManager.Instance.UseWizardEnergy(0.05f);
             AudioManager.Instance.Play("attack");
