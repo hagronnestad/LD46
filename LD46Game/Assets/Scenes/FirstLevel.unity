@@ -4914,7 +4914,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364364054}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &364364057
 Camera:
   m_ObjectHideFlags: 0
@@ -9698,8 +9698,8 @@ Transform:
   - {fileID: 766115549}
   - {fileID: 1138675503}
   - {fileID: 1556279662}
-  - {fileID: 1232325255}
   - {fileID: 1387474756}
+  - {fileID: 1232325255}
   - {fileID: 1510330962}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -10098,7 +10098,7 @@ PrefabInstance:
     - target: {fileID: 8177484612500221856, guid: a9f246c48b072f047a189304c6d69d8d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 45
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 8177484612500221856, guid: a9f246c48b072f047a189304c6d69d8d,
         type: 3}
@@ -14454,7 +14454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1474639368}
   attackPoint: {fileID: 1185681220}
-  attackPrefab: {fileID: 5997683329366554318, guid: 11a888b0b6eaac14eb1038a698849510,
+  attackPrefab: {fileID: 7706460041948112386, guid: fa7128b4bae662a4abb3449811fc8160,
     type: 3}
   attackForce: 0.25
   chargedAttackParticleSystem: {fileID: 1619736744}
@@ -17509,7 +17509,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c1bd7d123e713814aa1879989f9e9a23, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -20771,46 +20771,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 947854829}
     m_Modifications:
-    - target: {fileID: 8177484611655444025, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8177484611655444025, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 8177484611655444025, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.34400815
-      objectReference: {fileID: 0}
-    - target: {fileID: 8177484611655444025, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9389667
-      objectReference: {fileID: 0}
-    - target: {fileID: 8177484611655444025, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -40.243
-      objectReference: {fileID: 0}
-    - target: {fileID: 8177484611655444026, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_PointLightInnerAngle
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 8177484611655444026, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_PointLightOuterAngle
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 8177484611655444026, guid: a9f246c48b072f047a189304c6d69d8d,
-        type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 8177484612500221856, guid: a9f246c48b072f047a189304c6d69d8d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20849,7 +20809,7 @@ PrefabInstance:
     - target: {fileID: 8177484612500221856, guid: a9f246c48b072f047a189304c6d69d8d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8177484612500221856, guid: a9f246c48b072f047a189304c6d69d8d,
         type: 3}

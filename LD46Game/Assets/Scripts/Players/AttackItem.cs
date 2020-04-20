@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Assets.Scripts.Players;
 public class AttackItem : MonoBehaviour
 {
-    public GameObject explosion;
     public float lifeLength;
     Controls controls;
+
+    Player player;
 
     Vector2 attackPos;
 
@@ -25,8 +26,6 @@ public class AttackItem : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag !=  "Basic Attack") {
-            GameObject explosionEffect = Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(explosionEffect, 1f);
             Destroy(gameObject);
         }
     }
