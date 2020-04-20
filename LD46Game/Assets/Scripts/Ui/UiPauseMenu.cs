@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Managers;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -8,25 +7,22 @@ namespace Assets.Scripts.Ui {
 
     public class UiPauseMenu : MonoBehaviour {
 
-        public GameObject pauseFirstButton;
-
         public GameObject Container;
 
         public Button ResumeButton;
         public Button RestartButton;
 
         private void Awake() {
-            pauseFirstButton = GameObject.FindGameObjectWithTag("Resume Button");
-            ResumeButton.onClick.AddListener(OnClick_Resume);
-            RestartButton.onClick.AddListener(OnClick_Restart);
+            //ResumeButton.onClick.AddListener(OnClick_Resume);
+            //RestartButton.onClick.AddListener(OnClick_Restart);
         }
 
-        private void OnClick_Resume() {
+        public void OnClick_Resume() {
             ClosePauseMenu();
             GameManager.Instance.ResumeGame();
         }
 
-        private void OnClick_Restart() {
+        public void OnClick_Restart() {
             GameManager.Instance.RestartGame();
         }
 
@@ -44,10 +40,7 @@ namespace Assets.Scripts.Ui {
         public void OpenPauseMenu() {
             GameManager.Instance.PauseGame();
             Container.SetActive(true);
-
-            EventSystem.current.SetSelectedGameObject(null);
-
-            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+            ResumeButton.Select();
         }
 
         public void ClosePauseMenu() {
