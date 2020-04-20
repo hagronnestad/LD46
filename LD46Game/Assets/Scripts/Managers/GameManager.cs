@@ -112,6 +112,5 @@ namespace Assets.Scripts.Managers {
         public void RestartGame() {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-
     }
 }
