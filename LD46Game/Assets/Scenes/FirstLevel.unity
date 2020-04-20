@@ -14015,16 +14015,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1474639370}
     m_Modifications:
-    - target: {fileID: 3443824146292636518, guid: fe3255bd30294c944a54b320ddc49eef,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3443824146292636518, guid: fe3255bd30294c944a54b320ddc49eef,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8432042092026974536, guid: fe3255bd30294c944a54b320ddc49eef,
         type: 3}
       propertyPath: m_Name
