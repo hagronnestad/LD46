@@ -196,6 +196,33 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI Actions"",
+            ""id"": ""c3b54c5d-4b24-4fea-9902-558e38a9d096"",
+            ""actions"": [
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""b9e32e52-6349-4d59-ae88-d9e832fa9953"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0ef6d347-a243-483f-94b8-623148cdf5b6"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -212,6 +239,9 @@ public class @Controls : IInputActionCollection, IDisposable
         m_PlayerActions_BasicAttack = m_PlayerActions.FindAction("Basic Attack", throwIfNotFound: true);
         m_PlayerActions_ChargedAttack = m_PlayerActions.FindAction("Charged Attack", throwIfNotFound: true);
         m_PlayerActions_PauseMenu = m_PlayerActions.FindAction("Pause Menu", throwIfNotFound: true);
+        // UI Actions
+        m_UIActions = asset.FindActionMap("UI Actions", throwIfNotFound: true);
+        m_UIActions_Enter = m_UIActions.FindAction("Enter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -314,6 +344,39 @@ public class @Controls : IInputActionCollection, IDisposable
         }
     }
     public PlayerActionsActions @PlayerActions => new PlayerActionsActions(this);
+
+    // UI Actions
+    private readonly InputActionMap m_UIActions;
+    private IUIActionsActions m_UIActionsActionsCallbackInterface;
+    private readonly InputAction m_UIActions_Enter;
+    public struct UIActionsActions
+    {
+        private @Controls m_Wrapper;
+        public UIActionsActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Enter => m_Wrapper.m_UIActions_Enter;
+        public InputActionMap Get() { return m_Wrapper.m_UIActions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActionsActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActionsActions instance)
+        {
+            if (m_Wrapper.m_UIActionsActionsCallbackInterface != null)
+            {
+                @Enter.started -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_UIActionsActionsCallbackInterface.OnEnter;
+            }
+            m_Wrapper.m_UIActionsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
+            }
+        }
+    }
+    public UIActionsActions @UIActions => new UIActionsActions(this);
     private int m_MainControlSchemeSchemeIndex = -1;
     public InputControlScheme MainControlSchemeScheme
     {
@@ -329,5 +392,9 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnBasicAttack(InputAction.CallbackContext context);
         void OnChargedAttack(InputAction.CallbackContext context);
         void OnPauseMenu(InputAction.CallbackContext context);
+    }
+    public interface IUIActionsActions
+    {
+        void OnEnter(InputAction.CallbackContext context);
     }
 }
