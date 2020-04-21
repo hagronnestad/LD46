@@ -25,7 +25,9 @@ public class SceneSwitch : MonoBehaviour
     IEnumerator Fade() {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => blackSquare.color.a >= 1);
-        SceneManager.LoadScene(sceneId + 1);
+        if (sceneId < 5) {
+            SceneManager.LoadScene(sceneId + 1);
+        }
         if(sceneId == 4) {
             SceneManager.LoadScene(0);
         }
